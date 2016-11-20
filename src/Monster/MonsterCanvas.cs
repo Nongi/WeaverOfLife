@@ -9,6 +9,7 @@ namespace WeaverOfLife
     class MonsterCanvas
     {
         public string name { get; set; }
+        public string acronyme { get; set; }
 
         public Tuple<int, int> hp { get; set; }
         public Tuple<int, int> atk { get; set; }
@@ -16,12 +17,14 @@ namespace WeaverOfLife
         public Tuple<int, int> spd { get; set; }
 
         public MonsterCanvas(string name_in,
+            string acronyme_in,
             Tuple<int, int> hp_tuple_in,
             Tuple<int, int> atk_tuple_in,
             Tuple<int, int> def_tuple_in,
             Tuple<int, int> spd_tuple_in)
         {
             name = name_in;
+            acronyme = acronyme_in;
             hp = hp_tuple_in;
             atk = atk_tuple_in;
             def = def_tuple_in;

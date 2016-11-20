@@ -70,7 +70,7 @@ namespace WeaverOfLife
             {
                 for (int j = 0; j < width; j++)
                 {
-                    Console.Write((map[i, j]==null ? " " : map[i, j].name) + ",");
+                    Console.Write((map[i, j]==null ? "   " : map[i, j].acronyme) + ",");
                 }
                 Console.WriteLine();
             } 

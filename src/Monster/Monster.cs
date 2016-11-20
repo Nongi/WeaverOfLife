@@ -11,33 +11,40 @@ namespace WeaverOfLife
     {
         MonsterCanvas race_stat;
 
-        public int hp { get; set; }
-        public int atk { get; set; }
-        public int def { get; set; }
-        public int spd { get; set; }
+        public Tuple<int, int> hp { get; set; }
+        public Tuple<int, int> atk { get; set; }
+        public Tuple<int, int> def { get; set; }
+        public Tuple<int, int> spd { get; set; }
 
 
         public int x { get; set; }
         public int y { get; set; }
         public string name { get; set; }
+        public string acronyme { get; set; }
 
         public Monster(int hp_in, int x_in, int y_in, string name_in)
         {
-            x = x_in;
-            y = y_in;
-            hp = hp_in;
-            name = name_in;
         }
 
         public Monster(MonsterCanvas mc_in, int x_in, int y_in, Random rnd_in)
         {
             x = x_in;
             y = y_in;
-            hp = rnd_in.Next(mc_in.hp.Item1, mc_in.hp.Item2);
-            atk = rnd_in.Next(mc_in.atk.Item1, mc_in.atk.Item2);
-            def = rnd_in.Next(mc_in.def.Item1, mc_in.def.Item2);
-            spd = rnd_in.Next(mc_in.spd.Item1, mc_in.spd.Item2);
+
+            int birth_hp = rnd_in.Next(mc_in.hp.Item1, mc_in.hp.Item2);
+            hp = new Tuple<int,int>(birth_hp,birth_hp);
+
+            int birth_atk = rnd_in.Next(mc_in.atk.Item1, mc_in.atk.Item2);
+            atk = new Tuple<int, int>(birth_atk, birth_atk);
+
+            int birth_def = rnd_in.Next(mc_in.def.Item1, mc_in.def.Item2);
+            def = new Tuple<int, int>(birth_atk, birth_atk);
+
+            int birth_spd = rnd_in.Next(mc_in.spd.Item1, mc_in.spd.Item2);
+            spd = new Tuple<int, int>(birth_atk, birth_atk);
+
             name = mc_in.name;
+            acronyme = mc_in.acronyme;
         }
 
         public void move_ran(Random rnd_in)

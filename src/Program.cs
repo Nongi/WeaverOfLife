@@ -24,17 +24,30 @@ namespace WeaverOfLife
              *      atk
              *      def
              *      spd
+             *      
              */
-            var knight_race = new MonsterCanvas("K",
+            /*
+            var knight_race = new MonsterCanvas(
+                "Knight",
+                "KNI",
                 Tuple.Create(20, 30),
                 Tuple.Create(5, 10),
                 Tuple.Create(10, 20),
                 Tuple.Create(5, 10));
-            var witch_race = new MonsterCanvas("W",
+            HandlerGlobal.saveMonsterCanvas("knight_race.json", knight_race);
+
+            var witch_race = new MonsterCanvas(
+                "Witche",
+                "WIT",
                 Tuple.Create(10, 20),
                 Tuple.Create(10, 15),
                 Tuple.Create(5, 10),
                 Tuple.Create(10, 15));
+            HandlerGlobal.saveMonsterCanvas("witch_race.json", witch_race);
+            */
+
+            var knight_race = HandlerGlobal.loadMonsterCanvas("knight_race.json");
+            var witch_race = HandlerGlobal.loadMonsterCanvas("witch_race.json");
 
             for (int i = 0; i <= 10; i++)
             {
