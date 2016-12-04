@@ -16,9 +16,10 @@ namespace WeaverOfLife
         public Tuple<int, int> def { get; set; }
         public Tuple<int, int> spd { get; set; }
 
+        public int vision = 1;
 
-        public int x { get; set; }
-        public int y { get; set; }
+        public Coordinates coord {get; set;}
+
         public string name { get; set; }
         public string acronyme { get; set; }
 
@@ -28,8 +29,8 @@ namespace WeaverOfLife
 
         public Monster(MonsterCanvas mc_in, int x_in, int y_in, Random rnd_in)
         {
-            x = x_in;
-            y = y_in;
+
+            coord = new Coordinates(x_in, y_in);
 
             int birth_hp = rnd_in.Next(mc_in.hp.Item1, mc_in.hp.Item2);
             hp = new Tuple<int,int>(birth_hp,birth_hp);
@@ -47,36 +48,11 @@ namespace WeaverOfLife
             acronyme = mc_in.acronyme;
         }
 
-        public void move_ran(Random rnd_in)
+
+
+        public int getAction()
         {
-            switch (rnd_in.Next(1, 5))
-            {
-                case (int)Move.Right: 
-                    x++;
-                    break;
-                case (int)Move.Up:
-                    y++;
-                    break;
-                case (int)Move.Left:
-                    x--;
-                    break;
-                case (int)Move.Down:
-                    y--;
-                    break;
-                default:
-                    break;
-            }
-
-            if (x > 24)
-                x = 24;
-            if (x < 1)
-                x = 1;
-
-            if (y > 24)
-                y = 24;
-            if (y < 1)
-                y = 1;
+            return 0;
         }
-
     }
 }

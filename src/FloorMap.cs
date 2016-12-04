@@ -44,17 +44,12 @@ namespace WeaverOfLife
             clean_tab();
 
             sort_Monster();
-            /*
-            foreach (var elt in list_monster)
-                elt.name = "T";
-            */
 
             foreach (var m in list_monster)
             {
                 /*m.move_ran(rnd);
                 floor[m.x,m.y]=m.name;*/
-
-                move_ran(m);
+                action(m);
             }
         }
 
@@ -88,49 +83,74 @@ namespace WeaverOfLife
         }
 
 
+        public void action(Monster m)
+        {
+            //m.vision
+            //m.coord.x, 
+            //m.coord.y
+            switch (m.getAction())
+            {
+                case 0:
+                    move(m);
+                    break;
+                case 1:
+                    attack(m);
+                    break;
+                default:
+                    break;
+            }
+        }
 
+        public void attack(Monster m)
+        {
+        }
+
+        public void move(Monster m)
+        {
+            move_ran(m);
+        }
 
         public void move_ran(Monster m)
         {
-            int x_old = m.x;
-            int y_old = m.y;
+            int x_old = m.coord.x;
+            int y_old = m.coord.y;
             switch (rnd.Next(1, 5))
             {
                 case (int)Move.Right:
-                    m.x++;
+                    m.coord.x++;
                     break;
                 case (int)Move.Up:
-                    m.y++;
+                    m.coord.y++;
                     break;
                 case (int)Move.Left:
-                    m.x--;
+                    m.coord.x--;
                     break;
                 case (int)Move.Down:
-                    m.y--;
+                    m.coord.y--;
                     break;
                 default:
                     break;
             }
 
-            if (m.x > width-1)
-                m.x = width - 1;
-            if (m.x < 1)
-                m.x = 1;
+            if (m.coord.x > width - 1)
+                m.coord.x = width - 1;
+            if (m.coord.x < 1)
+                m.coord.x = 1;
 
-            if (m.y > heigth - 1)
-                m.y = heigth - 1;
-            if (m.y < 1)
-                m.y = 1;
+            if (m.coord.y > heigth - 1)
+                m.coord.y = heigth - 1;
+            if (m.coord.y < 1)
+                m.coord.y = 1;
 
-            if (map[m.x, m.y] == null)
+            if (map[m.coord.x, m.coord.y] == null)
             {
-                map[m.x, m.y] = m;
+                map[m.coord.x, m.coord.y] = m;
                 map[x_old, y_old] = null;
             }
             else
             {
-                m.x = x_old;
-                m.y = y_old;
+                m.coord.x = x_old;
+                m.coord.y = y_old;
             }
         }
     }
